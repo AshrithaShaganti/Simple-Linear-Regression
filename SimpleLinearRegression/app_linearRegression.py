@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import seaborn as sns
 import numpy as np
@@ -12,9 +13,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # PAGE CONFIGURATIONS #
 st.set_page_config("Linear Regression", layout="centered")
 
-# LOAD CSS #
-def load_css(file):
-    with open(file) as f:
+def load_css(file_name):
+    base_dir = os.path.dirname(__file__)
+    css_file = os.path.join(base_dir, file_name)
+
+    with open(css_file, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 load_css("style.css")
@@ -117,3 +120,4 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.markdown('</div>', unsafe_allow_html=True)
+
